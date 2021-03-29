@@ -3,6 +3,8 @@ package com.i9development.ifood.cadastro;
 import java.util.List;
 import java.util.Optional;
 
+import javax.annotation.security.RolesAllowed;
+import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -17,15 +19,29 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import org.eclipse.microprofile.openapi.annotations.enums.SecuritySchemeType;
+import org.eclipse.microprofile.openapi.annotations.security.OAuthFlow;
+import org.eclipse.microprofile.openapi.annotations.security.OAuthFlows;
+import org.eclipse.microprofile.openapi.annotations.security.SecurityRequirement;
+import org.eclipse.microprofile.openapi.annotations.security.SecurityScheme;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
+
+import com.i9development.ifood.cadastro.dto.AdicionarRestauranteDTO;
+import com.i9development.ifood.cadastro.dto.RestauranteMapper;
 
 @Path("/restaurantes")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @Tag(name = "restaurante")
+@RolesAllowed("proprietario")
+@SecurityScheme(securitySchemeName = "ifood-oauth", type = SecuritySchemeType.OAUTH2, flows = @OAuthFlows(password = @OAuthFlow(tokenUrl = "http://localhost:8180/auth/realms/ifood/protocol/openid-connect/token")))
+@SecurityRequirement(name = "ifood-oauth", scopes = {})
 public class RestauranteResource {
 
-	@GET
+    @Inject
+    RestauranteMapper restauranteMapper;
+
+    @GET
 	public List<Restaurante> buscar() {
 
 		return Restaurante.listAll();
@@ -33,8 +49,9 @@ public class RestauranteResource {
 
 	@POST
 	@Transactional
-	public Response adicionar(Restaurante dto) {
-		dto.persist();
+	public Response adicionar(AdicionarRestauranteDTO dto) {
+		Restaurante restaurante = restauranteMapper.toRestaurante(dto);
+		restaurante.persist();
 		return Response.status(Status.CREATED).build();
 	}
 
