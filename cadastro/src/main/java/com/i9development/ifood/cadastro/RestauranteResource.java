@@ -128,34 +128,35 @@ public class RestauranteResource {
 		// prato.preco = dto.preco;
 		// prato.restaurante = restauranteOp.get();
 		// prato.persist();
-		
+
 		Prato prato = pratoMapper.toPrato(dto);
-        prato.restaurante = restauranteOp.get();
-        prato.persist();
+		prato.restaurante = restauranteOp.get();
+		prato.persist();
 
 		return Response.status(Status.CREATED).build();
 	}
 
 	@PUT
-    @Path("{idRestaurante}/pratos/{id}")
-    @Transactional
-    @Tag(name = "prato")
-    public void atualizar(@PathParam("idRestaurante") Long idRestaurante, @PathParam("id") Long id, AtualizarPratoDTO dto) {
-        Optional<Restaurante> restauranteOp = Restaurante.findByIdOptional(idRestaurante);
-        if (restauranteOp.isEmpty()) {
-            throw new NotFoundException("Restaurante não existe");
-        }
+	@Path("{idRestaurante}/pratos/{id}")
+	@Transactional
+	@Tag(name = "prato")
+	public void atualizar(@PathParam("idRestaurante") Long idRestaurante, @PathParam("id") Long id,
+			AtualizarPratoDTO dto) {
+		Optional<Restaurante> restauranteOp = Restaurante.findByIdOptional(idRestaurante);
+		if (restauranteOp.isEmpty()) {
+			throw new NotFoundException("Restaurante não existe");
+		}
 
-        //No nosso caso, id do prato vai ser único, independente do restaurante...
-        Optional<Prato> pratoOp = Prato.findByIdOptional(id);
+		// No nosso caso, id do prato vai ser único, independente do restaurante...
+		Optional<Prato> pratoOp = Prato.findByIdOptional(id);
 
-        if (pratoOp.isEmpty()) {
-            throw new NotFoundException("Prato não existe");
-        }
-        Prato prato = pratoOp.get();
-        pratoMapper.toPrato(dto, prato);
-        prato.persist();
-    }
+		if (pratoOp.isEmpty()) {
+			throw new NotFoundException("Prato não existe");
+		}
+		Prato prato = pratoOp.get();
+		pratoMapper.toPrato(dto, prato);
+		prato.persist();
+	}
 
 	@DELETE
 	@Path("{idRestaurante}/pratos/{id}")
