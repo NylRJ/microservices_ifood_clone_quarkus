@@ -21,6 +21,9 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import org.eclipse.microprofile.openapi.annotations.enums.SecuritySchemeType;
+import org.eclipse.microprofile.openapi.annotations.media.Content;
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.eclipse.microprofile.openapi.annotations.security.OAuthFlow;
 import org.eclipse.microprofile.openapi.annotations.security.OAuthFlows;
 import org.eclipse.microprofile.openapi.annotations.security.SecurityRequirement;
@@ -33,6 +36,7 @@ import com.i9development.ifood.cadastro.dto.AtualizarPratoDTO;
 import com.i9development.ifood.cadastro.dto.AtualizarRestauranteDTO;
 import com.i9development.ifood.cadastro.dto.PratoMapper;
 import com.i9development.ifood.cadastro.dto.RestauranteMapper;
+import com.i9development.ifood.cadastro.infra.ConstraintViolationResponse;
 
 @Path("/restaurantes")
 @Produces(MediaType.APPLICATION_JSON)
@@ -57,6 +61,8 @@ public class RestauranteResource {
 
 	@POST
 	@Transactional
+	@APIResponse(responseCode = "201", description = "Caso restaurante seja cadastrado com sucesso")
+	@APIResponse(responseCode = "400", content = @Content(schema = @Schema(allOf = ConstraintViolationResponse.class)))
 	public Response adicionar(@Valid AdicionarRestauranteDTO dto) {
 		Restaurante restaurante = restauranteMapper.toRestaurante(dto);
 		restaurante.persist();

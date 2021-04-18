@@ -15,7 +15,7 @@ import javax.validation.Payload;
 @Documented
 public @interface ValidDTO {
 
-    String message() default "{com.github.viniciusfcf.ifood.cadastro.infra.ValidDTO.message}";
+    String message() default "{com.i9development.ifood.cadastro.infra.ValidDTO.message}";
 
     Class<?>[] groups() default {};
 
