@@ -2,6 +2,7 @@ package com.i9development.ifood.cadastro.dto;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 
 import com.i9development.ifood.cadastro.Restaurante;
 
@@ -17,6 +18,12 @@ public interface RestauranteMapper {
 	
 	
 	@Mapping(target = "nome", source = "nomeFantasia")	
-	public void toRestaurante(AtualizarRestauranteDTO dto);
+	public void toRestaurante(AtualizarRestauranteDTO dto, @MappingTarget Restaurante restaurante);
+	
+	@Mapping(target = "nomeFantasia", source = "nome")
+	@Mapping(target = "dataCriacao", dateFormat = "dd/MM/yyyy HH:mm:ss")
+	public RestauranteDTO toRestauranteDTO(Restaurante restaurante);
+	
+	
 	
 }
