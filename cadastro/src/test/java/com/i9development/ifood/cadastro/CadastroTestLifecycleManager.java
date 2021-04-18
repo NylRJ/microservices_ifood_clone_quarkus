@@ -1,4 +1,4 @@
-package com.i9development.ifood;
+package com.i9development.ifood.cadastro;
 
 import java.util.HashMap;
 import java.util.Map;
