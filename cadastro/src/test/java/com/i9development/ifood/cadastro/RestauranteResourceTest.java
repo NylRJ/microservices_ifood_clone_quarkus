@@ -52,6 +52,7 @@ public class RestauranteResourceTest {
 
     //Exemplo de um teste de PUT
 
+    
     @Test
     @DataSet("restaurantes-cenario-1.yml")
     public void testAlterarRestaurante() {

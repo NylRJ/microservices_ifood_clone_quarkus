@@ -28,3 +28,7 @@ services:
     - "14268:14268"
     - "14250:14250"
     - "9411:9411"
+  prometheus_ifood:
+    container_name: prometheus_ifood
+    image: prometheus:v2.26.0
+    network_mode: "host"
