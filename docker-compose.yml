@@ -30,5 +30,5 @@ services:
     - "9411:9411"
   prometheus_ifood:
     container_name: prometheus_ifood
-    image: prometheus:v2.26.0
+    image: my-prometheus
     network_mode: "host"
