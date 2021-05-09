@@ -28,4 +28,11 @@ services:
     - "14268:14268"
     - "14250:14250"
     - "9411:9411"
+
+  prometheus_ifood:
+    container_name: prometheus_ifood
+    image: prometheus-ifood
+    ports:
+      - "9090:9090"
+    
   
