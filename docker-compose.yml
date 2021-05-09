@@ -34,5 +34,11 @@ services:
     image: prometheus-ifood
     ports:
       - "9090:9090"
+  
+  grafana_ifood:
+    container_name: grafana_ifood
+    image: grafana/grafana:7.5.0
+    ports:
+      - "3000:3000"
     
   
