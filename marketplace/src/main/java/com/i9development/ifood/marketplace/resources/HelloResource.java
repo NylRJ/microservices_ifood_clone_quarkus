@@ -1,4 +1,4 @@
-package com.i9development.ifood.marketplace;
+package com.i9development.ifood.marketplace.resources;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
