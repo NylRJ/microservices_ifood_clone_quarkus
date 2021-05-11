@@ -1,4 +1,4 @@
-package com.i9development.ifood.cadastro;
+package com.i9development.ifood.cadastro.resources;
 
 import java.util.List;
 import java.util.Optional;
@@ -33,6 +33,7 @@ import org.eclipse.microprofile.openapi.annotations.security.SecurityRequirement
 import org.eclipse.microprofile.openapi.annotations.security.SecurityScheme;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
+import com.i9development.ifood.cadastro.domain.Prato;
 import com.i9development.ifood.cadastro.dto.AdicionarPratoDTO;
 import com.i9development.ifood.cadastro.dto.AdicionarRestauranteDTO;
 import com.i9development.ifood.cadastro.dto.AtualizarPratoDTO;

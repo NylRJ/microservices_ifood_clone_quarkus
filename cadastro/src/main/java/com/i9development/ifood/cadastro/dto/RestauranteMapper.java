@@ -4,7 +4,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
-import com.i9development.ifood.cadastro.Restaurante;
+import com.i9development.ifood.cadastro.resources.Restaurante;
 
 @Mapper(componentModel = "cdi")
 public interface RestauranteMapper {

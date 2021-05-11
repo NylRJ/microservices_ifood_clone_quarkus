@@ -1,4 +1,4 @@
-package com.i9development.ifood.cadastro;
+package com.i9development.ifood.cadastro.resources;
 
 import java.util.Date;
 
@@ -12,6 +12,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+
+import com.i9development.ifood.cadastro.domain.Localizacao;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
