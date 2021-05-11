@@ -1,4 +1,4 @@
-package com.i9development.ifood.cadastro.domain;
+package com.i9development.ifood.cadastro.domain.valueobjects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

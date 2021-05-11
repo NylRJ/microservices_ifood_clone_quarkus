@@ -9,8 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.i9development.ifood.cadastro.resources.Restaurante;
-
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 @Entity

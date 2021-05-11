@@ -32,8 +32,11 @@ import org.eclipse.microprofile.openapi.annotations.security.OAuthFlows;
 import org.eclipse.microprofile.openapi.annotations.security.SecurityRequirement;
 import org.eclipse.microprofile.openapi.annotations.security.SecurityScheme;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
+import org.eclipse.microprofile.reactive.messaging.Channel;
+import org.eclipse.microprofile.reactive.messaging.Emitter;
 
 import com.i9development.ifood.cadastro.domain.Prato;
+import com.i9development.ifood.cadastro.domain.Restaurante;
 import com.i9development.ifood.cadastro.dto.AdicionarPratoDTO;
 import com.i9development.ifood.cadastro.dto.AdicionarRestauranteDTO;
 import com.i9development.ifood.cadastro.dto.AtualizarPratoDTO;
@@ -56,10 +59,13 @@ public class RestauranteResource {
 
 	@Inject
 	PratoMapper pratoMapper;
+	@Inject
+	@Channel("restaurantes") // Canal do ActiveMQ
+	Emitter<Restaurante> emitter;
 
 	@GET
 	@Counted(name = "Quantidade Busca Restaurante")
-	@SimplyTimed(name = "Busca Simplesmente Cronometrada" )
+	@SimplyTimed(name = "Busca Simplesmente Cronometrada")
 	@Timed(name = "Tempo Completo de Busca")
 	public List<Restaurante> buscar() {
 
@@ -73,6 +79,10 @@ public class RestauranteResource {
 	public Response adicionar(@Valid AdicionarRestauranteDTO dto) {
 		Restaurante restaurante = restauranteMapper.toRestaurante(dto);
 		restaurante.persist();
+		// Trecho que vai postar na fila activeMQ
+		//Jsonb create = JsonbBuilder.create();
+		//String json = create.toJson(restaurante);
+		emitter.send(restaurante);
 		return Response.status(Status.CREATED).build();
 	}
 

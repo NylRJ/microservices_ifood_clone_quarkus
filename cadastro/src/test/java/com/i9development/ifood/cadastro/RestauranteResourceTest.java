@@ -10,8 +10,8 @@ import com.github.database.rider.cdi.api.DBRider;
 import com.github.database.rider.core.api.configuration.DBUnit;
 import com.github.database.rider.core.api.configuration.Orthography;
 import com.github.database.rider.core.api.dataset.DataSet;
+import com.i9development.ifood.cadastro.domain.Restaurante;
 import com.i9development.ifood.cadastro.dto.AtualizarRestauranteDTO;
-import com.i9development.ifood.cadastro.resources.Restaurante;
 import com.i9development.ifood.cadastro.util.TokenUtils;
 
 import io.quarkus.test.common.QuarkusTestResource;

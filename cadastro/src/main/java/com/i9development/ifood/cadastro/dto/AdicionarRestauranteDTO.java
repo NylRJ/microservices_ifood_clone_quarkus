@@ -6,9 +6,9 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import com.i9development.ifood.cadastro.domain.Restaurante;
 import com.i9development.ifood.cadastro.infra.DTO;
 import com.i9development.ifood.cadastro.infra.ValidDTO;
-import com.i9development.ifood.cadastro.resources.Restaurante;
 
 @ValidDTO
 public class AdicionarRestauranteDTO implements DTO {
