@@ -24,6 +24,7 @@ public class Prato  {
 
     public BigDecimal preco;
     
+
     public static Multi<PratoDTO> findAll(PgPool pgPool) {
         Uni<RowSet<Row>> preparedQuery = pgPool.query("select * from prato").execute();
         return unitToMulti(preparedQuery);

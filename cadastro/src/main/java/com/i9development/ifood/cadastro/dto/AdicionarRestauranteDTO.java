@@ -1,7 +1,6 @@
 package com.i9development.ifood.cadastro.dto;
 
 import javax.validation.ConstraintValidatorContext;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
