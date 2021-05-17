@@ -14,7 +14,7 @@ import io.vertx.mutiny.sqlclient.Tuple;
 
 public class Prato  {
 
-    public Long id;
+	public Long id;
 
     public String nome;
 
@@ -23,7 +23,6 @@ public class Prato  {
     public Restaurante restaurante;
 
     public BigDecimal preco;
-    
 
     public static Multi<PratoDTO> findAll(PgPool pgPool) {
         Uni<RowSet<Row>> preparedQuery = pgPool.query("select * from prato").execute();
@@ -50,5 +49,5 @@ public class Prato  {
                 .map(RowSet::iterator)
                 .map(iterator -> iterator.hasNext() ? PratoDTO.from(iterator.next()) : null);
     }
-   
+
 }
