@@ -21,12 +21,10 @@ public class RestauranteCadastrado {
 
 	
 	@Incoming("restaurantes")
+	@io.smallrye.reactive.messaging.annotations.Blocking
 	public void receberRestaurante(JsonObject json) {
 		Restaurante restaurante = json.mapTo(Restaurante.class);
-		System.out.println("-----------------------------");
-		System.out.println(json);
-		System.out.println("-----------------------------");
-		System.out.println(restaurante);
-		//restaurante.persist(pgPool);
+		
+		restaurante.persist(pgPool);
 	}
 }
