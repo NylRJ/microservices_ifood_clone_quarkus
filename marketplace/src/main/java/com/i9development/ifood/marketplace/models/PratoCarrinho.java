@@ -43,4 +43,11 @@ public class PratoCarrinho {
                 .map(pgRowSet -> pgRowSet.rowCount() == 1);
 
     }
+
+	@Override
+	public String toString() {
+		return "PratoCarrinho [cliente=" + cliente + ", prato=" + prato + "]";
+	}
+    
+    
 }

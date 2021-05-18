@@ -48,6 +48,8 @@ public class CarrinhoResource {
         PratoCarrinho pc = new PratoCarrinho();
         pc.cliente = CLIENTE;
         pc.prato = idPrato;
+        System.out.println(idPrato.getClass().getSimpleName());
+        System.out.println(pc);
         return PratoCarrinho.save(client, CLIENTE, idPrato);
 
     }
