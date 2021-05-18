@@ -13,11 +13,11 @@ public class PratoCarrinho {
 
     public Long prato;
 
-    public static Uni<Long> save(PgPool client, String cliente, Long prato) {
+    public static Uni<String> save(PgPool client, String cliente, Long prato) {
         return client.preparedQuery("INSERT INTO prato_cliente (cliente, prato) VALUES ($1, $2) RETURNING (cliente)").execute(
                 Tuple.of(cliente, prato))
 
-                .map(pgRowSet -> pgRowSet.iterator().next().getLong("cliente"));
+                .map(pgRowSet -> pgRowSet.iterator().next().getString("cliente"));
     }
 
     public static Uni<List<PratoCarrinho>> findCarrinho(PgPool client, String cliente) {

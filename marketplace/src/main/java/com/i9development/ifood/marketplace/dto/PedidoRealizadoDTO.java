@@ -10,4 +10,11 @@ public class PedidoRealizadoDTO {
 
     public String cliente;
 
+	@Override
+	public String toString() {
+		return "PedidoRealizadoDTO [pratos=" + pratos + ", restaurante=" + restaurante + ", cliente=" + cliente + "]";
+	}
+
+    
+    
 }

@@ -43,13 +43,12 @@ public class CarrinhoResource {
 
     @POST
     @Path("/prato/{idPrato}")
-    public Uni<Long> adicionarPrato(@PathParam("idPrato") Long idPrato) {
+    public Uni<String> adicionarPrato(@PathParam("idPrato") Long idPrato) {
         //poderia retornar o pedido atual
         PratoCarrinho pc = new PratoCarrinho();
         pc.cliente = CLIENTE;
         pc.prato = idPrato;
-        System.out.println(idPrato.getClass().getSimpleName());
-        System.out.println(pc);
+ 
         return PratoCarrinho.save(client, CLIENTE, idPrato);
 
     }
@@ -61,6 +60,9 @@ public class CarrinhoResource {
         String cliente = CLIENTE;
         pedido.cliente = cliente;
         List<PratoCarrinho> pratoCarrinho = PratoCarrinho.findCarrinho(client, cliente).await().indefinitely();
+        //TODO:Teste
+        System.out.println("Prato carrinho");
+        System.out.println(pratoCarrinho);
         //Utilizar mapstruts
         List<PratoPedidoDTO> pratos = pratoCarrinho.stream().map(pc -> from(pc)).collect(Collectors.toList());
         pedido.pratos = pratos;
@@ -68,6 +70,8 @@ public class CarrinhoResource {
         RestauranteDTO restaurante = new RestauranteDTO();
         restaurante.nome = "nome restaurante";
         pedido.restaurante = restaurante;
+        System.out.println("Pedido");
+        System.out.println(pedido);
         emitterPedido.send(pedido);
         return PratoCarrinho.delete(client, cliente);
     }
