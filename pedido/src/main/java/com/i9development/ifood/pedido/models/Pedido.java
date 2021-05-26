@@ -14,5 +14,12 @@ public class Pedido extends PanacheMongoEntity {
 	public Restaurante restaurante;
 	public String entregador;
 	public Localizacao localizacaoEntregador;
+	@Override
+	public String toString() {
+		return "Pedido [cliente=" + cliente + ", pratos=" + pratos + ", restaurante=" + restaurante + ", entregador="
+				+ entregador + ", localizacaoEntregador=" + localizacaoEntregador + "]";
+	}
+	
+	
 	
 }

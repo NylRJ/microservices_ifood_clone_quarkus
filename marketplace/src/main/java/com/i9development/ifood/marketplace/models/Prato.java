@@ -50,4 +50,12 @@ public class Prato  {
                 .map(iterator -> iterator.hasNext() ? PratoDTO.from(iterator.next()) : null);
     }
 
+	@Override
+	public String toString() {
+		return "Prato [id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", restaurante=" + restaurante
+				+ ", preco=" + preco + "]";
+	}
+    
+    
+
 }

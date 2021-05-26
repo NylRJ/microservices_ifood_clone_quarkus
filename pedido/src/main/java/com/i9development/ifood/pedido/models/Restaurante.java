@@ -15,4 +15,13 @@ public class Restaurante {
 	public Localizacao localizacao;
 	public Date dataCriacao;
 	public Date dataAtualizacao;
+	@Override
+	public String toString() {
+		return "Restaurante [id=" + id + ", proprietario=" + proprietario + ", cnpj=" + cnpj + ", nome=" + nome
+				+ ", localizacao=" + localizacao + ", dataCriacao=" + dataCriacao + ", dataAtualizacao="
+				+ dataAtualizacao + "]";
+	}
+	
+	
+	
 }
